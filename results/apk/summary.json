@@ -25,5 +25,6 @@
     "GPU/NPU execution",
     "Offline folder import integration",
     "Background/process-death recovery"
-  ]
+  ],
+  "timing_scope": "Engine timer only; excludes model hash verification and initial APK/DEX setup"
 }

@@ -1,0 +1,45 @@
+{
+  "repo": "Twiggiee/image-lab",
+  "release_tag": "workspace-backup-2026-11-16",
+  "release_id": 446474941,
+  "verified_at_utc": "2026-11-16T00:40:11.834859+00:00",
+  "all_assets_verified": true,
+  "assets": [
+    {
+      "name": "workspace-snapshot.tar.gz.part-000",
+      "bytes": 1048576000,
+      "sha256": "3e27d5d8f60b2938f0c575a54f9546663a3e19b3ee82c498f573971e1c85a5ac"
+    },
+    {
+      "name": "workspace-snapshot.tar.gz.part-001",
+      "bytes": 1048576000,
+      "sha256": "7e980922dfa8a33ccf031e2335d51ced5ede574416428b71397a0806cd8071a7"
+    },
+    {
+      "name": "workspace-snapshot.tar.gz.part-002",
+      "bytes": 1048576000,
+      "sha256": "a39e8c9fc25767435f5f4759cbd3fbdc4e722d41c4cc10725da672f3b2068907"
+    },
+    {
+      "name": "workspace-snapshot.tar.gz.part-003",
+      "bytes": 168783834,
+      "sha256": "249a530ac24c341b1d8b6358e1d257270717a218b8497a8919fa9923e546d639"
+    },
+    {
+      "name": "snapshot-manifest.json",
+      "bytes": 1027,
+      "sha256": "5915352f385e91dbb2a16af16d348a7afe3310dcb4704b1dd05da36609797428"
+    },
+    {
+      "name": "SHA256SUMS",
+      "bytes": 404,
+      "sha256": "8781697607c8b373dafa93e1c952e42b10db708e4604754815d6bc9d4bb928c8"
+    },
+    {
+      "name": "app.apk",
+      "bytes": 6452727,
+      "sha256": "6582ab030e4105458c456490d5e2be1ab299cd0bc8a8eee16c2bb90b3f0c2c38"
+    }
+  ],
+  "snapshot_archive_entries": 24191
+}
