@@ -1,70 +1,65 @@
-# Image Lab: standalone Android inference baseline
+# Image Lab
 
-This project contains a small Java CLI harness and three verified Bonsai Image LiteRT graphs. It is an inference experiment, not an installed Android app. It does not use Gestura's app process, proprietary JNI code or downloaded private files.
+An Android APK and standalone Java runner for on-device image inference, with a working Bonsai Image 4B baseline and research into Gestura's image/video pipelines.
 
-## What is implemented
+## Verified now
 
-- Qwen byte-level BPE and the exact Bonsai chat suffix, checked against 26 published fixture cases on the phone.
-- Four-step shifted Euler schedule, SplitMix64/Box-Muller noise and 2x2 packed-latent decoding.
-- A shared official LiteRT 2.2.0 Environment and sequential model residency.
-- Stage-specific CPU/GPU/NPU requests, explicit shape/type/byte-size checks, finite-value rejection, wall-time logs and PNG export.
-- A 1 GiB MemAvailable guard before graph loads and at denoising-step boundaries. This does not predict transient allocation peaks or guarantee protection against the low-memory killer.
-- A CANCEL file checked at stage boundaries. It does not interrupt an in-flight native graph call.
+- The installed **Image Lab 0.1.1 APK** generated a 256×256 image through all four denoising steps and the VAE on SM-F926B / Android API 35.
+- All 26 published tokenizer fixtures passed.
+- The APK's PNG is **byte-identical** to the earlier standalone runner's result for the same prompt and seed.
+- Inference uses app-private model files, official LiteRT 2.2.0 libraries and a foreground service; it does not depend on an external shell runner or Gestura's libraries.
+- Current validated placement is CPU/XNNPACK. GPU/NPU and coordinated accelerator execution remain future work.
 
-The initial correctness baseline requests CPU for all three stages. Other placements are configurable but unverified. Listing an NPU interface does not mean a compatible Qualcomm compiler/dispatch driver is installed or that a graph ran on the NPU. Actual delegation must be established from runtime logs; no automatic claim of heterogeneous inference is made.
+See [the APK validation record](results/apk/RESULT.md), [receipt](results/apk/receipt.json), [recorded power/thermal conditions](results/apk/conditions.json) and [sample image](results/apk/baseline.png).
 
-## Build
+The earlier standalone run took 89.56 seconds, but the user reported power-sharing/deep-sleep conditions. The APK run took 101.96 seconds with a wake lock held and thermal status 2. Both are **functional checks, not controlled performance benchmarks**.
 
-Uses javac and d8 from the existing Buddy toolchain, without building or installing an APK:
+## Install and use
 
-```
-./build-runner.sh
-```
+1. Install the signed `app.apk` from this private repository's release assets.
+2. Allow Image Lab in any DNS/firewall app that blocks new applications.
+3. Tap **Prepare model** to retrieve and verify the pinned 4.28 GB model package. During development this can reuse the loopback transfer server; otherwise the app uses the public HTTPS download URLs.
+4. Enter a prompt and seed, then tap **Generate image**.
 
-Runtime dependencies: Google's official litert-api 2.2.0 AAR classes, its arm64 JNI/runtime/GPU libraries and Kotlin stdlib 2.2.10. Download provenance is in runtime/*.pom. D8's existing version warns about the newer Kotlin metadata; bytecode compilation succeeds, and the Environment and tokenizer have executed on Android.
+The app can also import an existing model folder with Android's file picker. That folder must contain `dit_256_int4b32.tflite`, `textenc_int4.tflite` and `vae_dec_256_fp32.tflite` matching the pinned hashes. Small tokenizer/fixture assets are packaged in the APK. Offline import is implemented but not yet integration-tested.
 
-## Models
+Once preparation is complete, inference needs neither network access nor shell access. Cancellation takes effect at the next stage boundary; it does not interrupt an in-flight native graph call.
 
-`download_models.py` downloads the three 256x256 graphs, metadata and tokenizer at pinned revision 317d577f5f962eb2d5a3980bca2ce047a8338212. Downloads are resumable; large files are SHA-256 checked with streaming reads. The working set is approximately 4.28 GB on disk. No model is loaded into a Java byte array.
-
-## Device execution
-
-The isolated directory is `/data/local/tmp/buddy-image-lab`. Use the phone tools to stage files from the local loopback transfer server. Example after staging:
-
-```
-CLASSPATH=/data/local/tmp/buddy-image-lab/runner.dex \
-LD_LIBRARY_PATH=/data/local/tmp/buddy-image-lab/runtime \
-app_process -Xmx512m \
--Djava.library.path=/data/local/tmp/buddy-image-lab/runtime \
-/system/bin com.buddyapps.imagelab.ImageRunner \
-generate /data/local/tmp/buddy-image-lab/models \
-/data/local/tmp/buddy-image-lab/output CPU,CPU,CPU \
-'a small bonsai tree in a blue ceramic pot, studio lighting' 7
-```
-
-Commands `tokenizer` and `vae` run independently. `vae` checks changed-input sensitivity and writes a smoke-test PNG; it is not text-to-image generation. The three backend names for `generate` correspond to text encoder, DiT and VAE respectively. Sequential placement is implemented; simultaneous multi-accelerator execution is not implemented yet.
-
-## Status and checks
-
-See results/ for saved evidence. The runner compiled, and the standalone runtime plus all 26 tokenizer fixtures passed on SM-F926B / API 35. Numerical host checks pass on the JVM. Full generation has now passed: the complete 256x256 four-step CPU pipeline produced results/baseline.png in 89.56 seconds. See results/receipt.json, results/generate-cpu.log and results/summary.json. GPU and NPU graph execution remain unverified.
-
-Read NOTICE.md for source/model attribution. The full model binaries and runtime libraries are excluded from source exports.
-
-## Android APK
-
-A plain-Java app wrapper is under `apk/`. It prepares and hashes the model files, runs inference in a foreground service with a partial wake lock, shows progress and the final image, and records power/idle/thermal conditions. It uses the same verified inference runner through a read-only DEX asset packaged in the signed APK; it downloads no executable code. Native libraries are the official LiteRT runtime, not Gestura's libraries.
-
-Build on the Buddy/Alpine Android toolchain:
+## Build the APK on Buddy/Alpine
 
 ```
 bash tools/setup-android-toolchain.sh
 ./tools/build-apk.sh
 ```
 
-Output: `apk/build/app.apk`. Install it with Android's package installer, prepare the model once, then generate. Model preparation can reuse the local loopback transfer server while developing, otherwise it downloads the pinned public files over HTTPS. Inference runs from app-private storage and needs neither the transfer server nor shell access after preparation.
+Output: `apk/build/app.apk`. The small bootstrap assets and official runtime dependencies are fetched automatically; building the APK does not require downloading the large model weights. Signing keys are kept outside the repository.
 
-The first command-line 89.56-second run was subsequently reported by the user to have been power-sharing/in a deep-sleep state. Treat it as a functional check, not a controlled performance benchmark. The APK records conditions and holds a wake lock for the active job; it does not change system power settings.
+The interface uses plain Java and Android framework views. The verified inference engine is packaged as a read-only DEX asset with the official native LiteRT libraries. The app downloads no executable code.
 
-See BACKUP.md for full-workspace release assets and restoration. GPU/NPU execution, heterogeneous partitioning, other model families and video generation remain future work.
+## Standalone runner
 
-APK 0.1.1 also supports importing an existing model folder using Android's file picker. Tokenizer and fixture files are packaged with the APK; imported graph files must match the pinned model hashes. A DNS/firewall blocker can prevent downloading even when other apps work; allow Image Lab in the blocker or use offline import. No network-blocker settings are changed by this app.
+```
+python3 tools/fetch_runtime.py
+python3 download_models.py
+./build-runner.sh
+```
+
+The model downloader is pinned to Bonsai revision `317d577f5f962eb2d5a3980bca2ce047a8338212`, resumes partial downloads and verifies large files using streaming SHA-256. Model files are loaded by native file path, never copied wholesale into Java arrays.
+
+The device harness uses `/data/local/tmp/buddy-image-lab` when staged through the phone tools. Commands `tokenizer`, `vae` and `generate` test the tokenizer, decoder sensitivity and complete generation respectively. The three stage backend requests are configurable, but only the CPU route is validated.
+
+## Memory, lifecycle and limits
+
+The engine shares a LiteRT Environment and closes each graph before loading the next. It validates signature names, tensor shapes/types/byte sizes and finite outputs. A 1 GiB MemAvailable admission guard is checked at model loads and denoising boundaries; this does not predict transient allocation peaks or guarantee protection from Android's low-memory killer.
+
+The APK holds a partial wake lock during user-started work and records interactive, idle, power-save, power-source and thermal conditions. It does not change system power settings. Process-death recovery and background lifecycle behavior have not yet been exhaustively tested.
+
+Z-Image, additional general-purpose models, heterogeneous CPU/GPU/NPU scheduling and video inference are planned, not implemented.
+
+## Research and complete backup
+
+[Research notes](research/) cover the recovered Gestura pipelines, community model differences and model-support requirements. The research does not establish that one converter forked another.
+
+The full initial workspace, including models, original Gestura APKs, recovered source, native libraries and tools, is stored as numbered private release assets. See [BACKUP.md](BACKUP.md) for checksum verification and restoration. Ongoing APK code and test evidence are committed on `main`; the full snapshot predates later APK fixes.
+
+Read [NOTICE.md](NOTICE.md) for upstream source/model attribution. Model/runtime binaries and build output are excluded from ordinary Git history.

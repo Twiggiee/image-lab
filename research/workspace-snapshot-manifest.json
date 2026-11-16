@@ -1,0 +1,34 @@
+{
+  "format": "concatenated gzip-compressed tar split into numbered parts",
+  "roots": [
+    "image-lab",
+    "gestura-research"
+  ],
+  "excludes": [
+    ".git",
+    "image-lab/backups"
+  ],
+  "parts": [
+    {
+      "file": "workspace-snapshot.tar.gz.part-000",
+      "bytes": 1048576000,
+      "sha256": "3e27d5d8f60b2938f0c575a54f9546663a3e19b3ee82c498f573971e1c85a5ac"
+    },
+    {
+      "file": "workspace-snapshot.tar.gz.part-001",
+      "bytes": 1048576000,
+      "sha256": "7e980922dfa8a33ccf031e2335d51ced5ede574416428b71397a0806cd8071a7"
+    },
+    {
+      "file": "workspace-snapshot.tar.gz.part-002",
+      "bytes": 1048576000,
+      "sha256": "a39e8c9fc25767435f5f4759cbd3fbdc4e722d41c4cc10725da672f3b2068907"
+    },
+    {
+      "file": "workspace-snapshot.tar.gz.part-003",
+      "bytes": 168783834,
+      "sha256": "249a530ac24c341b1d8b6358e1d257270717a218b8497a8919fa9923e546d639"
+    }
+  ],
+  "restore": "Verify SHA-256 then concatenate numbered parts in order and extract with tar -xz in an empty directory."
+}
