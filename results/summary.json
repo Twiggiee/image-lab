@@ -1,0 +1,45 @@
+{
+  "device": "SM-F926B",
+  "soc": "SM8350",
+  "api": 35,
+  "runtime": "LiteRT 2.2.0",
+  "completed": true,
+  "output_size": [
+    256,
+    256
+  ],
+  "seed": 7,
+  "elapsed_seconds": 89.559851216,
+  "stage_backend_requests": [
+    "CPU",
+    "CPU",
+    "CPU"
+  ],
+  "encoder_write_run_read_seconds": 5.689586091,
+  "dit_step_seconds": [
+    14.765421505,
+    14.168234264999999,
+    17.72449942,
+    15.54058614
+  ],
+  "vae_write_run_read_seconds": 8.170541819,
+  "load_seconds": {
+    "textenc_int4.tflite": 2.521427083,
+    "dit_256_int4b32.tflite": 9.00844182,
+    "vae_dec_256_fp32.tflite": 0.974542239
+  },
+  "minimum_sampled_memavailable_kib": 2511144,
+  "tokenizer_fixtures_passed": 26,
+  "baseline_png_sha256": "cb06168e7fbf0e5c6bc4d187a49347831aed4cd5ba8f7ccb637517494f1413a5",
+  "limitations": [
+    "Single run; phone was charging and user was using YouTube",
+    "Memory recorded at stage/step boundaries, not a continuous peak measurement",
+    "CPU/XNNPACK route; NPU execution and GPU numerical parity not verified",
+    "Visual prompt match inspected; not a numerical comparison to original PyTorch"
+  ],
+  "user_reported_conditions": [
+    "power-sharing",
+    "deep-sleep state"
+  ],
+  "timing_interpretation": "functional validation only; not a controlled performance benchmark"
+}

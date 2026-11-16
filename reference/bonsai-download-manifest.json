@@ -1,0 +1,78 @@
+{
+  "repo": "litert-community/Bonsai-Image-ternary-4B",
+  "revision": "317d577f5f962eb2d5a3980bca2ce047a8338212",
+  "files": [
+    {
+      "type": "file",
+      "oid": "660fd91c02b3d9fec5ac57d69759cd1f6683bb5b",
+      "size": 5402,
+      "path": "android/app/src/test/resources/tok_golden.json"
+    },
+    {
+      "type": "file",
+      "oid": "0d25f3a97bb9c1059f47d9fd3f75c895574469a4",
+      "size": 2267356304,
+      "lfs": {
+        "oid": "4a8f6c12382a9be5ff2d45bb1f70c1cbbce47fe139fa3970b9f868d91565024e",
+        "size": 2267356304,
+        "pointerSize": 135
+      },
+      "xetHash": "7dddabdafdec7dce0250265b58972a5e2dbe6dd16a2618295d80369475a834f8",
+      "path": "dit_256_int4b32.tflite"
+    },
+    {
+      "type": "file",
+      "oid": "60891f68e2faf949025a73e50fe81535bb62904e",
+      "size": 6577,
+      "path": "pipeline_meta.json"
+    },
+    {
+      "type": "file",
+      "oid": "93b5ad81a6ee703ba069afa5ed28fb257ba81368",
+      "size": 1798100240,
+      "lfs": {
+        "oid": "12937850e4a1670986e79663649d071f9db4095d9a74ce1cca045551447f7683",
+        "size": 1798100240,
+        "pointerSize": 135
+      },
+      "xetHash": "cc15377ad75199462c812f7ddd97bf23cd80db48e7f916f13111190a642a7aed",
+      "path": "textenc_int4.tflite"
+    },
+    {
+      "type": "file",
+      "oid": "01be9b307daa2d425f7c168c9fb145a286e0afb4",
+      "size": 4168,
+      "path": "tokenizer/chat_template.jinja"
+    },
+    {
+      "type": "file",
+      "oid": "31349551d90c7606f325fe0f11bbb8bd5fa0d7c7",
+      "size": 1671853,
+      "path": "tokenizer/merges.txt"
+    },
+    {
+      "type": "file",
+      "oid": "ddaf69808214a44fdd26d3785b66c1367c78277a",
+      "size": 5404,
+      "path": "tokenizer/tokenizer_config.json"
+    },
+    {
+      "type": "file",
+      "oid": "4783fe10ac3adce15ac8f358ef5462739852c569",
+      "size": 2776833,
+      "path": "tokenizer/vocab.json"
+    },
+    {
+      "type": "file",
+      "oid": "2363c22fd3dbd618a11bdd0a7bf63f2b4cf991bb",
+      "size": 198831180,
+      "lfs": {
+        "oid": "f3ac3b1bca6a48a4fee55779317a3e6adf797336afe82aaa03e8a9b5bbdab324",
+        "size": 198831180,
+        "pointerSize": 134
+      },
+      "xetHash": "3f243e91db1534a47ac6c7dd02abe9dcf96a3dedacdcbbe2a8aad8e434275d12",
+      "path": "vae_dec_256_fp32.tflite"
+    }
+  ]
+}

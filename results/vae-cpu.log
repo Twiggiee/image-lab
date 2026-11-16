@@ -1,0 +1,37 @@
+INFO: [litert_runtime_builtin.cc:63] Loaded runtime library and found kLiteRtRuntimeBuiltin.
+INFO: [environment.cc:36] Creating LiteRT environment with options
+INFO: [accelerator_registry.cc:54] RegisterAccelerator: ptr=0xb40000719ad530b0, name=NpuAccelerator
+INFO: [npu_registry.cc:30] NPU accelerator registered.
+INFO: [gpu_registry.cc:101] Attempting to load GPU accelerator(libLiteRtGpuAccelerator.so).
+INFO: [gpu_registry.cc:101] Attempting to load GPU accelerator(libLiteRtClGlAccelerator.so).
+INFO: [accelerator_registry.cc:54] RegisterAccelerator: ptr=0xb40000719ad53fb0, name=LiteRT GPU
+INFO: [gpu_registry.cc:109] Dynamically loaded GPU accelerator(libLiteRtClGlAccelerator.so) registered.
+INFO: [accelerator_registry.cc:54] RegisterAccelerator: ptr=0xb40000719ad52ff0, name=CpuAccelerator
+INFO: [cpu_registry.cc:75] XNNPACK CPU accelerator registered.
+{"event":"environment","elapsed_ms":38.889583,"device":"SM-F926B","available_interfaces":"[NPU, GPU, CPU]"}
+{"event":"memory","elapsed_ms":40.689218,"available_kib":4944572}
+{"event":"load_begin","elapsed_ms":56.909739,"graph":"vae_dec_256_fp32.tflite","requested_backend":"CPU","file_bytes":198831180}
+INFO: [compiled_model.cc:833] Flatbuffer model initialized directly from incoming litert model.
+INFO: Initialized TensorFlow Lite runtime.
+ERROR: [litert_dispatch.cc:122] No dispatch library found in /data/local/tmp/buddy-image-lab/runtime
+ERROR: [dispatch_delegate.cc:116] Failed to initialize Dispatch API: ERROR: [third_party/odml/litert/litert/runtime/dispatch/dispatch_delegate.cc:176]
+INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+VERBOSE: Replacing 818 out of 882 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 69 partitions for subgraph 0 (main).
+{"event":"load_complete","elapsed_ms":402.073072,"graph":"vae_dec_256_fp32.tflite","load_ms":345.091459}
+INFO: [environment.cc:36] Creating LiteRT environment with options
+WARNING: [npu_registry.cc:34] NPU accelerator could not be loaded and registered: kLiteRtStatusErrorInvalidArgument.
+INFO: [gpu_registry.cc:101] Attempting to load GPU accelerator(libLiteRtGpuAccelerator.so).
+INFO: [gpu_registry.cc:101] Attempting to load GPU accelerator(libLiteRtClGlAccelerator.so).
+INFO: [accelerator_registry.cc:54] RegisterAccelerator: ptr=0xb40000719ad54670, name=LiteRT GPU
+INFO: [gpu_registry.cc:109] Dynamically loaded GPU accelerator(libLiteRtClGlAccelerator.so) registered.
+INFO: [accelerator_registry.cc:54] RegisterAccelerator: ptr=0xb40000719ad54a30, name=CpuAccelerator
+INFO: [cpu_registry.cc:75] XNNPACK CPU accelerator registered.
+{"event":"run_complete","elapsed_ms":7421.47083,"graph":"vae_dec_256_fp32.tflite","write_run_read_ms":7019.265101,"elements":196608}
+{"event":"run_complete","elapsed_ms":15130.890515,"graph":"vae_dec_256_fp32.tflite","write_run_read_ms":7709.273487,"elements":196608}
+{"event":"vae_smoke_pass","elapsed_ms":15136.448119,"absolute_difference":34.10511964652687}
+{"event":"closed","elapsed_ms":15245.704473,"graph":"vae_dec_256_fp32.tflite"}
+INFO: [accelerator_registry.cc:43] DestroyAccelerator: ptr=0xb40000719ad52ff0, name=CpuAccelerator
+INFO: [accelerator_registry.cc:43] DestroyAccelerator: ptr=0xb40000719ad53fb0, name=LiteRT GPU
+INFO: [accelerator_registry.cc:43] DestroyAccelerator: ptr=0xb40000719ad530b0, name=NpuAccelerator
+INFO: [accelerator_registry.cc:43] DestroyAccelerator: ptr=0xb40000719ad54a30, name=CpuAccelerator
+INFO: [accelerator_registry.cc:43] DestroyAccelerator: ptr=0xb40000719ad54670, name=LiteRT GPU

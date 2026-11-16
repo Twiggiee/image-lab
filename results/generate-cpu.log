@@ -1,0 +1,67 @@
+INFO: [litert_runtime_builtin.cc:63] Loaded runtime library and found kLiteRtRuntimeBuiltin.
+INFO: [environment.cc:36] Creating LiteRT environment with options
+INFO: [accelerator_registry.cc:54] RegisterAccelerator: ptr=0xb4000070b1048ef0, name=NpuAccelerator
+INFO: [npu_registry.cc:30] NPU accelerator registered.
+INFO: [gpu_registry.cc:101] Attempting to load GPU accelerator(libLiteRtGpuAccelerator.so).
+INFO: [gpu_registry.cc:101] Attempting to load GPU accelerator(libLiteRtClGlAccelerator.so).
+INFO: [accelerator_registry.cc:54] RegisterAccelerator: ptr=0xb4000070b1048e30, name=LiteRT GPU
+INFO: [gpu_registry.cc:109] Dynamically loaded GPU accelerator(libLiteRtClGlAccelerator.so) registered.
+INFO: [accelerator_registry.cc:54] RegisterAccelerator: ptr=0xb4000070b10480b0, name=CpuAccelerator
+INFO: [cpu_registry.cc:75] XNNPACK CPU accelerator registered.
+{"event":"environment","elapsed_ms":39.849063,"device":"SM-F926B","available_interfaces":"[NPU, GPU, CPU]"}
+{"event":"tokenizer_pass","elapsed_ms":342.000573,"cases":26}
+{"event":"prompt","elapsed_ms":342.353125,"attended_tokens":25,"seed":7}
+{"event":"memory","elapsed_ms":343.641094,"available_kib":4690924}
+{"event":"load_begin","elapsed_ms":358.114896,"graph":"textenc_int4.tflite","requested_backend":"CPU","file_bytes":1798100240}
+INFO: [compiled_model.cc:833] Flatbuffer model initialized directly from incoming litert model.
+INFO: Initialized TensorFlow Lite runtime.
+ERROR: [litert_dispatch.cc:122] No dispatch library found in /data/local/tmp/buddy-image-lab/runtime
+ERROR: [dispatch_delegate.cc:116] Failed to initialize Dispatch API: ERROR: [third_party/odml/litert/litert/runtime/dispatch/dispatch_delegate.cc:176]
+INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+VERBOSE: Replacing 2192 out of 2252 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 56 partitions for subgraph 0 (main).
+{"event":"load_complete","elapsed_ms":2879.659843,"graph":"textenc_int4.tflite","load_ms":2521.427083}
+INFO: [environment.cc:36] Creating LiteRT environment with options
+WARNING: [npu_registry.cc:34] NPU accelerator could not be loaded and registered: kLiteRtStatusErrorInvalidArgument.
+INFO: [gpu_registry.cc:101] Attempting to load GPU accelerator(libLiteRtGpuAccelerator.so).
+INFO: [gpu_registry.cc:101] Attempting to load GPU accelerator(libLiteRtClGlAccelerator.so).
+INFO: [accelerator_registry.cc:54] RegisterAccelerator: ptr=0xb4000070b104a090, name=LiteRT GPU
+INFO: [gpu_registry.cc:109] Dynamically loaded GPU accelerator(libLiteRtClGlAccelerator.so) registered.
+INFO: [accelerator_registry.cc:54] RegisterAccelerator: ptr=0xb4000070b1049d90, name=CpuAccelerator
+INFO: [cpu_registry.cc:75] XNNPACK CPU accelerator registered.
+{"event":"run_complete","elapsed_ms":8569.354476,"graph":"textenc_int4.tflite","write_run_read_ms":5689.586091,"elements":1966080}
+{"event":"closed","elapsed_ms":8729.147497,"graph":"textenc_int4.tflite"}
+{"event":"memory","elapsed_ms":8734.335049,"available_kib":4133808}
+{"event":"load_begin","elapsed_ms":8734.444893,"graph":"dit_256_int4b32.tflite","requested_backend":"CPU","file_bytes":2267356304}
+INFO: [compiled_model.cc:833] Flatbuffer model initialized directly from incoming litert model.
+ERROR: [litert_dispatch.cc:122] No dispatch library found in /data/local/tmp/buddy-image-lab/runtime
+ERROR: [dispatch_delegate.cc:116] Failed to initialize Dispatch API: ERROR: [third_party/odml/litert/litert/runtime/dispatch/dispatch_delegate.cc:176]
+VERBOSE: Replacing 2688 out of 2704 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 3 partitions for subgraph 0 (main).
+{"event":"load_complete","elapsed_ms":17742.915775,"graph":"dit_256_int4b32.tflite","load_ms":9008.44182}
+{"event":"memory","elapsed_ms":17743.757285,"available_kib":2840620}
+{"event":"run_complete","elapsed_ms":32509.236863,"graph":"dit_256_int4b32.tflite","write_run_read_ms":14765.421505,"elements":32768}
+{"event":"step_complete","elapsed_ms":32511.447279,"step":1,"sigma":1,"delta":-0.04460925}
+{"event":"memory","elapsed_ms":32511.9928,"available_kib":2600100}
+{"event":"run_complete","elapsed_ms":46680.267951,"graph":"dit_256_int4b32.tflite","write_run_read_ms":14168.234265,"elements":32768}
+{"event":"step_complete","elapsed_ms":46681.614982,"step":2,"sigma":0.95539075,"delta":-0.07825655}
+{"event":"memory","elapsed_ms":46719.25993,"available_kib":2511144}
+{"event":"run_complete","elapsed_ms":64443.893569,"graph":"dit_256_int4b32.tflite","write_run_read_ms":17724.49942,"elements":32768}
+{"event":"step_complete","elapsed_ms":64444.686278,"step":3,"sigma":0.8771342,"delta":-0.17302251}
+{"event":"memory","elapsed_ms":64445.243153,"available_kib":2528300}
+{"event":"run_complete","elapsed_ms":79985.882782,"graph":"dit_256_int4b32.tflite","write_run_read_ms":15540.58614,"elements":32768}
+{"event":"step_complete","elapsed_ms":79986.885126,"step":4,"sigma":0.7041117,"delta":-0.7041117}
+{"event":"closed","elapsed_ms":80231.085386,"graph":"dit_256_int4b32.tflite"}
+{"event":"memory","elapsed_ms":80237.268303,"available_kib":4283200}
+{"event":"load_begin","elapsed_ms":80238.280386,"graph":"vae_dec_256_fp32.tflite","requested_backend":"CPU","file_bytes":198831180}
+INFO: [compiled_model.cc:833] Flatbuffer model initialized directly from incoming litert model.
+ERROR: [litert_dispatch.cc:122] No dispatch library found in /data/local/tmp/buddy-image-lab/runtime
+ERROR: [dispatch_delegate.cc:116] Failed to initialize Dispatch API: ERROR: [third_party/odml/litert/litert/runtime/dispatch/dispatch_delegate.cc:176]
+VERBOSE: Replacing 818 out of 882 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 69 partitions for subgraph 0 (main).
+{"event":"load_complete","elapsed_ms":81212.880855,"graph":"vae_dec_256_fp32.tflite","load_ms":974.542239}
+{"event":"run_complete","elapsed_ms":89383.584133,"graph":"vae_dec_256_fp32.tflite","write_run_read_ms":8170.541819,"elements":196608}
+{"event":"closed","elapsed_ms":89439.805018,"graph":"vae_dec_256_fp32.tflite"}
+{"event":"generation_complete","elapsed_ms":89560.281581,"output":"\/data\/local\/tmp\/buddy-image-lab\/output\/baseline.png"}
+INFO: [accelerator_registry.cc:43] DestroyAccelerator: ptr=0xb4000070b10480b0, name=CpuAccelerator
+INFO: [accelerator_registry.cc:43] DestroyAccelerator: ptr=0xb4000070b1048e30, name=LiteRT GPU
+INFO: [accelerator_registry.cc:43] DestroyAccelerator: ptr=0xb4000070b1048ef0, name=NpuAccelerator
+INFO: [accelerator_registry.cc:43] DestroyAccelerator: ptr=0xb4000070b1049d90, name=CpuAccelerator
+INFO: [accelerator_registry.cc:43] DestroyAccelerator: ptr=0xb4000070b104a090, name=LiteRT GPU

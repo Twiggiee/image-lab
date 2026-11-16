@@ -1,0 +1,18 @@
+# Reproducible third-party binaries and local build output
+models/
+runtime/
+build/
+apk/build/
+apk/assets/runtime.dex
+apk/assets/licenses/
+apk/jniLibs/
+backups/
+*.zip
+*.part
+__pycache__/
+*.pyc
+download.log
+# Never store signing credentials
+*.jks
+*.keystore
+.env

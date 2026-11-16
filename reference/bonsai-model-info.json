@@ -1,0 +1,199 @@
+{
+  "_id": "6a6973a0fa1c691872878eed",
+  "id": "litert-community/Bonsai-Image-ternary-4B",
+  "private": false,
+  "pipeline_tag": "text-to-image",
+  "library_name": "litert",
+  "tags": [
+    "litert",
+    "tflite",
+    "on-device",
+    "ternary",
+    "flux2",
+    "text-to-image",
+    "base_model:prism-ml/bonsai-image-ternary-4B-unpacked",
+    "base_model:quantized:prism-ml/bonsai-image-ternary-4B-unpacked",
+    "license:apache-2.0",
+    "region:us"
+  ],
+  "downloads": 3665,
+  "likes": 12,
+  "modelId": "litert-community/Bonsai-Image-ternary-4B",
+  "author": "litert-community",
+  "sha": "317d577f5f962eb2d5a3980bca2ce047a8338212",
+  "lastModified": "2026-10-17T20:08:20.000Z",
+  "gated": false,
+  "disabled": false,
+  "model-index": null,
+  "config": {},
+  "cardData": {
+    "license": "apache-2.0",
+    "base_model": "prism-ml/bonsai-image-ternary-4B-unpacked",
+    "pipeline_tag": "text-to-image",
+    "tags": [
+      "litert",
+      "tflite",
+      "on-device",
+      "ternary",
+      "flux2"
+    ],
+    "base_model_relation": "quantized"
+  },
+  "siblings": [
+    {
+      "rfilename": ".gitattributes"
+    },
+    {
+      "rfilename": "NOTICE.md"
+    },
+    {
+      "rfilename": "README.md"
+    },
+    {
+      "rfilename": "android/.gitignore"
+    },
+    {
+      "rfilename": "android/LICENSE"
+    },
+    {
+      "rfilename": "android/README.md"
+    },
+    {
+      "rfilename": "android/app/build.gradle.kts"
+    },
+    {
+      "rfilename": "android/app/src/androidTest/java/com/bonsai/imagegen/BonsaiDeviceCheck.kt"
+    },
+    {
+      "rfilename": "android/app/src/main/AndroidManifest.xml"
+    },
+    {
+      "rfilename": "android/app/src/main/java/com/bonsai/imagegen/BonsaiMath.kt"
+    },
+    {
+      "rfilename": "android/app/src/main/java/com/bonsai/imagegen/BonsaiPipeline.kt"
+    },
+    {
+      "rfilename": "android/app/src/main/java/com/bonsai/imagegen/ImageArea.kt"
+    },
+    {
+      "rfilename": "android/app/src/main/java/com/bonsai/imagegen/MainActivity.kt"
+    },
+    {
+      "rfilename": "android/app/src/main/java/com/bonsai/imagegen/PromptRules.kt"
+    },
+    {
+      "rfilename": "android/app/src/main/java/com/bonsai/imagegen/QwenTokenizer.kt"
+    },
+    {
+      "rfilename": "android/app/src/main/java/com/bonsai/imagegen/TabularSpan.kt"
+    },
+    {
+      "rfilename": "android/app/src/main/res/values-v31/themes.xml"
+    },
+    {
+      "rfilename": "android/app/src/main/res/values/themes.xml"
+    },
+    {
+      "rfilename": "android/app/src/main/res/xml/file_paths.xml"
+    },
+    {
+      "rfilename": "android/app/src/test/java/com/bonsai/imagegen/PortParityTest.kt"
+    },
+    {
+      "rfilename": "android/app/src/test/java/com/bonsai/imagegen/PromptRulesTest.kt"
+    },
+    {
+      "rfilename": "android/app/src/test/resources/tok_golden.json"
+    },
+    {
+      "rfilename": "android/build.gradle.kts"
+    },
+    {
+      "rfilename": "android/gradle.properties"
+    },
+    {
+      "rfilename": "android/gradle/wrapper/gradle-wrapper.jar"
+    },
+    {
+      "rfilename": "android/gradle/wrapper/gradle-wrapper.properties"
+    },
+    {
+      "rfilename": "android/gradlew"
+    },
+    {
+      "rfilename": "android/gradlew.bat"
+    },
+    {
+      "rfilename": "android/prep_assets.sh"
+    },
+    {
+      "rfilename": "android/settings.gradle.kts"
+    },
+    {
+      "rfilename": "bonsai-flux2-4b.litertlm"
+    },
+    {
+      "rfilename": "dit_256_int4b32.tflite"
+    },
+    {
+      "rfilename": "dit_gpu_int4b32.tflite"
+    },
+    {
+      "rfilename": "dit_int4b32.tflite"
+    },
+    {
+      "rfilename": "fox.png"
+    },
+    {
+      "rfilename": "generate.py"
+    },
+    {
+      "rfilename": "grid_512_vs_256.png"
+    },
+    {
+      "rfilename": "pipeline_meta.json"
+    },
+    {
+      "rfilename": "quality_grid.png"
+    },
+    {
+      "rfilename": "textenc_int4.tflite"
+    },
+    {
+      "rfilename": "textenc_int8_weightonly.tflite"
+    },
+    {
+      "rfilename": "tokenizer/added_tokens.json"
+    },
+    {
+      "rfilename": "tokenizer/chat_template.jinja"
+    },
+    {
+      "rfilename": "tokenizer/merges.txt"
+    },
+    {
+      "rfilename": "tokenizer/special_tokens_map.json"
+    },
+    {
+      "rfilename": "tokenizer/tokenizer.json"
+    },
+    {
+      "rfilename": "tokenizer/tokenizer_config.json"
+    },
+    {
+      "rfilename": "tokenizer/vocab.json"
+    },
+    {
+      "rfilename": "vae_dec_256_fp32.tflite"
+    },
+    {
+      "rfilename": "vae_dec_fp32.tflite"
+    }
+  ],
+  "spaces": [
+    "litert-community/bonsai-image-ternary-4b-litert"
+  ],
+  "createdAt": "2026-07-29T03:29:36.000Z",
+  "usedStorage": 16420916623
+}

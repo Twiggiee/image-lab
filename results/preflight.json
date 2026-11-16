@@ -1,0 +1,18 @@
+{
+  "device_model": "SM-F926B",
+  "soc": "SM8350",
+  "android_api": 35,
+  "runtime": "LiteRT 2.2.0",
+  "environment_probe": "passed",
+  "available_interfaces": [
+    "NPU",
+    "GPU",
+    "CPU"
+  ],
+  "npu_execution_verified": false,
+  "tokenizer_fixture_cases": 26,
+  "tokenizer_result": "passed",
+  "vae_cpu_smoke": "passed; finite and changed-input sensitive",
+  "full_image": "passed: 256x256, four steps, 89.56 seconds; see receipt.json",
+  "model_revision": "317d577f5f962eb2d5a3980bca2ce047a8338212"
+}
