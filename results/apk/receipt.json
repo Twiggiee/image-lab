@@ -1,0 +1,14 @@
+{
+  "model": "litert-community\/Bonsai-Image-ternary-4B",
+  "size": 256,
+  "seed": 7,
+  "prompt": "a small bonsai tree in a blue ceramic pot, studio lighting",
+  "requested_backends": [
+    "CPU",
+    "CPU",
+    "CPU"
+  ],
+  "completed_steps": 4,
+  "tokenizer_cases": 26,
+  "elapsed_ms": 101960.784284
+}

@@ -1,0 +1,12 @@
+{
+  "model": "SM-F926B",
+  "sdk": 35,
+  "interactive": true,
+  "device_idle": false,
+  "power_save": false,
+  "wake_lock_held": true,
+  "battery_level": 31,
+  "plugged": 1,
+  "run_kind": "APK functional check; uncontrolled performance conditions",
+  "thermal_status": 2
+}

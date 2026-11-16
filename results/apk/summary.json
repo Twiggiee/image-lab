@@ -1,0 +1,29 @@
+{
+  "package": "com.buddyapps.imagelab",
+  "version_code": 2,
+  "version_name": "0.1.1",
+  "completed": true,
+  "elapsed_seconds": 101.960784284,
+  "completed_steps": 4,
+  "tokenizer_cases": 26,
+  "conditions": {
+    "model": "SM-F926B",
+    "sdk": 35,
+    "interactive": true,
+    "device_idle": false,
+    "power_save": false,
+    "wake_lock_held": true,
+    "battery_level": 31,
+    "plugged": 1,
+    "run_kind": "APK functional check; uncontrolled performance conditions",
+    "thermal_status": 2
+  },
+  "png_sha256": "cb06168e7fbf0e5c6bc4d187a49347831aed4cd5ba8f7ccb637517494f1413a5",
+  "matches_cli_png_bytes": true,
+  "scope": "Real app sandbox with app-private models, packaged DEX/JNI and foreground service; CPU route only",
+  "untested": [
+    "GPU/NPU execution",
+    "Offline folder import integration",
+    "Background/process-death recovery"
+  ]
+}

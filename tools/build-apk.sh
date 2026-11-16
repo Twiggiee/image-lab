@@ -7,6 +7,7 @@ mkdir -p apk/assets/licenses apk/jniLibs/arm64-v8a
 cp build/dex/classes.dex apk/assets/runtime.dex
 cp runtime/native/*.so apk/jniLibs/arm64-v8a/
 cp LICENSE NOTICE.md reference/LiteRT-LICENSE apk/assets/licenses/
+python3 tools/package_bootstrap.py
 bash tools/android-build-base.sh apk
 python3 tools/package_native.py
 apksigner sign --ks "$HOME/.buddy/keys/apps.jks" --ks-key-alias apps --ks-pass "file:$HOME/.buddy/keys/password" --out apk/build/app.apk apk/build/unsigned-with-native.apk

@@ -66,3 +66,5 @@ Output: `apk/build/app.apk`. Install it with Android's package installer, prepar
 The first command-line 89.56-second run was subsequently reported by the user to have been power-sharing/in a deep-sleep state. Treat it as a functional check, not a controlled performance benchmark. The APK records conditions and holds a wake lock for the active job; it does not change system power settings.
 
 See BACKUP.md for full-workspace release assets and restoration. GPU/NPU execution, heterogeneous partitioning, other model families and video generation remain future work.
+
+APK 0.1.1 also supports importing an existing model folder using Android's file picker. Tokenizer and fixture files are packaged with the APK; imported graph files must match the pinned model hashes. A DNS/firewall blocker can prevent downloading even when other apps work; allow Image Lab in the blocker or use offline import. No network-blocker settings are changed by this app.

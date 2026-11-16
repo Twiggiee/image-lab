@@ -18,7 +18,7 @@ public final class InferenceService extends Service {
  static final ExecutorService worker=Executors.newSingleThreadExecutor();
  PowerManager.WakeLock wake;
  void update(String text){status=text;sendBroadcast(new Intent(ACTION).setPackage(getPackageName()));}
- void note(String line){synchronized(log){if(log.length()>100000)log.delete(0,50000);log.append(line).append('\n');}sendBroadcast(new Intent(ACTION).setPackage(getPackageName()));}
+ void note(String line){android.util.Log.i("ImageLab",line);try(FileOutputStream f=new FileOutputStream(new File(getFilesDir(),"last-diagnostic.log"),true)){f.write((line+"\n").getBytes("UTF-8"));}catch(IOException ignored){}synchronized(log){if(log.length()>100000)log.delete(0,50000);log.append(line).append('\n');}sendBroadcast(new Intent(ACTION).setPackage(getPackageName()));}
  @Override public IBinder onBind(Intent intent){return null;}
  @Override public int onStartCommand(Intent intent,int flags,int id){
   if(intent==null)return START_NOT_STICKY;
@@ -30,6 +30,7 @@ public final class InferenceService extends Service {
   wake=((PowerManager)getSystemService(POWER_SERVICE)).newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,"ImageLab:inference");wake.acquire(60*60*1000L);
   worker.execute(()->{try{
    if("prepare".equals(action)){update("Preparing model files…");ModelInstaller.prepare(this,this::update);update("Model ready · Bonsai Image 256×256 · CPU");}
+   else if("import".equals(action)){update("Importing model files…");ModelInstaller.importFolder(this,android.net.Uri.parse(intent.getStringExtra("tree")),this::update);update("Model ready · Bonsai Image 256×256 · CPU");}
    else if("generate".equals(action))generate(prompt,seed);
    else throw new IllegalArgumentException("Unknown action");
   }catch(Throwable ex){Throwable e=ex instanceof InvocationTargetException?((InvocationTargetException)ex).getTargetException():ex;StringWriter sw=new StringWriter();e.printStackTrace(new PrintWriter(sw));note(sw.toString());update(cancelled?"Stopped.":"Could not complete: "+e.getMessage());}

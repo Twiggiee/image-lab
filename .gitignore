@@ -16,3 +16,7 @@ download.log
 *.jks
 *.keystore
 .env
+apk/assets/bootstrap/
+apk-build.log
+results/bridge-server.log
+tools/run-backup-upload.sh
